@@ -1,0 +1,74 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Proxy API
+  description: Mobile and web proxy API gateway.
+host: localhost
+basePath: /pagopa/api/v1
+schemes:
+  - https
+security:
+  - Token: []
+paths:
+  "/user":
+    x-swagger-router-controller: PagoPAController
+    get:
+      operationId: getUser
+      summary: Get user's data
+      description: Returns the user data needed by PagaPA Wallet backend.
+      responses:
+        "200":
+          description: Found.
+          schema:
+            $ref: "#/definitions/PagoPAUser"
+          examples:
+            application/json:
+              email: "email@example.com"
+              name: "Name"
+              family_name: "Surname"
+              mobile_phone: "+393331234567"
+        "400":
+          description: Bad request.
+          schema:
+            $ref: "#/definitions/ProblemJson"
+        "401":
+          description: Token null or invalid.
+        "500":
+          description: There was an error in retrieving the user data.
+          schema:
+            $ref: "#/definitions/ProblemJson"
+definitions:
+  EmailAddress:
+    $ref: "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/v1.6.0/openapi/definitions.yaml#/EmailAddress"
+  ProblemJson:
+    $ref: "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/v1.6.0/openapi/definitions.yaml#/ProblemJson"
+  PagoPAUser:
+    title: PagoPA user
+    description: User data needed by PagaPA proxy.
+    type: object
+    properties:
+      name:
+        type: string
+      family_name:
+        type: string
+      email:
+        $ref: '#/definitions/EmailAddress'
+      mobile_phone:
+        type: string
+        minLength: 1
+    required:
+      - name
+      - family_name
+      - email
+      - mobile_phone
+responses: {}
+parameters: {}
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Token:
+    type: apiKey
+    name: token
+    in: query

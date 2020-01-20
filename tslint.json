@@ -5,7 +5,14 @@
   ],
   "jsRules": {},
   "rules": {
-    "no-submodule-imports": false
+    "no-submodule-imports": false,
+    "use-type-alias": false
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*",
+      "generated/**/*.ts"
+    ]
+  }
 }
