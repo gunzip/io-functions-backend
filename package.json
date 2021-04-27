@@ -117,7 +117,7 @@
     "passport-strategy": "^1.0.0",
     "patch-package": "^5.1.1",
     "range_check": "^1.4.0",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "redis-clustr": "^1.6.0",
     "request-ip": "^2.1.1",
     "spid-passport": "git://github.com/teamdigitale/spid-passport.git#v1.1.7",
