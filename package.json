@@ -97,7 +97,7 @@
     "date-fns": "^1.30.1",
     "dotenv": "^6.0.0",
     "durable-functions": "^1.2.4",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-enforces-ssl": "1.1.0",
     "fp-ts": "~1.17.0",
     "helmet": "3.21.0",
